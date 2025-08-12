@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  loki:
+    image: grafana/loki
+    pull_policy: always
+    restart: unless-stopped
+    ports:
+      - "63100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - ./loki-config.yaml:/etc/loki/local-config.yaml
+
+volumes:
+  loki-data:
